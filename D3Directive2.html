@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>AngularJS, directives, and D3.js</title>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js">
+  </script>
+ </head>
+
+ <body ng-app="myapp">
+  <cube></cube>
+
+  <script>
+    var myapp = angular.module('myapp', []);
+
+    myapp.directive('cube', function() {
+      function link(scope, el, attr) {
+         // d3.select(el[0]).append('svg');
+         el = el[0];
+
+         // CUSTOM CODE FOR RENDERING A CUBE 
+         var width = 300, height = 300;
+         var points1 = "50,50 200,50 240,30 90,30";
+         var points2 = "200,50 200,200 240,180 240,30";
+         var fillColors = ["red", "yellow", "blue"];
+    
+       //var svg = d3.select("body")
+         var svg = d3.select(el)
+                     .append("svg")
+                     .attr("width",  width)
+                     .attr("height", height);
+     
+         // top face (parallelogram)
+         var polygon = svg.append("polygon")
+                          .attr("points", points1) 
+                          .attr("fill",   fillColors[1])
+                          .attr("stroke", "blue")
+                          .attr("stroke-width", 1); 
+      
+          // front face (rectangle)
+          svg.append("rect")
+             .attr("x", 50) 
+             .attr("y", 50) 
+             .attr("width",  150)
+             .attr("height", 150)
+             .attr("fill", fillColors[0]);
+     
+          // right face (parallelogram)
+          var polygon = svg.append("polygon")
+                           .attr("points", points2) 
+                           .attr("fill",   fillColors[2])
+                           .attr("stroke", "blue")
+                           .attr("stroke-width", 1); 
+      }
+
+      return {
+         link: link,
+         restrict: 'E'
+      } 
+    });
+  </script>
+ </body>
+</html>
+

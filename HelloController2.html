@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+ <head>
+  <meta charset="utf-8">
+  <title>AngularJS Controller</title>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+  </script>
+
+  <!-- controller is defined in a separate JS file -->
+  <script src="HelloController2.js"></script>
+ </head>
+
+ <body>
+  <div ng-controller="MainCtrl as vm">
+    <h1>{{vm.message}}</h1>
+  </div>
+ </body>
+</html>
+

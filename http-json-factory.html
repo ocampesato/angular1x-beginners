@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+ <head>
+  <meta charset="utf-8">
+  <title>AngularJS JSON Data</title>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+  </script>
+ </head>
+
+ <body>
+    <div ng-controller="MainCtrl as vm">
+      <table>
+       <thead>
+         <tr> <th>First Name</th> <th>Last Name</th> </tr>
+       <thead>
+       <tbody>
+         <tr ng-repeat="user in vm.userdata">
+           <td>{{user.fname}}</td>
+           <td>{{user.lname}}</td>
+         </tr>
+       </tbody>
+      </table>
+    </div>
+
+    <script>
+      var app = angular.module('myapp', []);
+
+      app.controller("MainCtrl", function(mydb) {
+        var vm = this;
+        mydb.getUserData().then(function(result) {
+           vm.userdata = result;
+//console.log("got userdata = "+JSON.stringify(result));
+                          });
+      });
+
+      app.factory('mydb', function($http) {
+        var mydb = {
+          getUserData: function () {
+              // $http returns a 'promise'
+              return $http.get("users.json").then(function (response) {
+                  return response.data;
+              });
+          }
+        };
+
+        return mydb; 
+      });
+    </script
+ </body>
+</html>
+

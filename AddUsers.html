@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8" />
+    <title>Add Users</title>
+
+    <script 
+     src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+    </script>
+  </head>
+  
+  <body>
+    <div ng-controller="MainCtrl as vm"> 
+      <p>My List of Users:</p>
+      <ul>
+        <li ng-repeat="user in vm.users track by $index"> 
+          {{user}}
+        </li> 
+      </ul>
+      <input type="text" name="item" ng-model='vm.newuser'>
+      <button ng-click="vm.addUser()">Add User</button>
+    </div>
+
+    <script> 
+      var app = angular.module("app", []);
+   
+      app.controller("MainCtrl", function() {
+         var vm = this;
+         vm.users = ["Tom", "Jane", "Dave", "Sally"];
+   
+         vm.addUser = function(item) {
+            console.log("new user = "+vm.newuser);
+            vm.users.push(vm.newuser);
+
+/*
+            if (user is null or empty ) {
+               display alert
+            } else {
+              if(user already exists) { 
+                 display alert
+              } else {
+                 add new user 
+              } 
+            } 
+*/
+         } 
+      });
+    </script> 
+  </body>
+</html>
+

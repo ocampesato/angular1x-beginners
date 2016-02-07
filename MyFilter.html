@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+ <head>
+  <meta charset="utf-8">
+  <title>AngularJS Controller</title>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+  </script>
+ </head>
+
+  <body>
+   <div ng-controller="MainCtrl as vm"> 
+      <input type="text" name="item" ng-model="vm.dataitem">
+      {{vm.dataitem|myfilter}} 
+      <button name="submit" value="Save" ng-click="vm.saveItem()">Save</button>
+   </div>
+
+   <script>
+     var app = angular.module('myapp', []);
+
+     app.controller("MainCtrl", function() { 
+        var vm = this;
+        vm.saveItem = function() {} 
+     })
+
+     // manipulate the argument in the return function
+     app.filter('myfilter', function() {
+       return function(input) {
+            if((input == null)||(input.length == 0)) {
+              return "";
+            } else { 
+              return input+input.toUpperCase();
+            } 
+       } 
+     });
+   </script
+ </body>
+</html>
+

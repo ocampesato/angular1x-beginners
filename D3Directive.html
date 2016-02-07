@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>AngularJS, directives, and D3.js</title>
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js">
+  </script>
+ </head>
+
+ <body ng-app="myapp">
+   <!-- 'cube' is an Angular directive (see below -->
+   <cube></cube>
+ 
+   <script>
+     var myapp = angular.module('myapp', []);
+ 
+     // define a 'cube' directive 
+     myapp.directive('cube', function() {
+       function link(scope, el, attr) {
+          d3.select(el[0]).append('svg');
+       }
+ 
+       // return an object containing 'link' 
+       // in order to modify the DOM 
+       return {
+          link: link,
+          restrict: 'E'
+       } 
+     });
+   </script>
+ </body>
+</html>
+

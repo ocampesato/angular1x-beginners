@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+ <head>
+  <meta charset="utf-8">
+  <title>AngularJS Controller</title>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+  </script>
+ </head>
+
+ <body>
+    <div ng-controller="MainCtrl as vm"> 
+      <!-- save hard-coded item in an array -->
+      <input type="submit" name="submit" value="Save Item" ng-click='vm.saveItem()')
+    </div>
+
+    <script>
+      var app = angular.module('myapp', []);
+
+      app.controller("MainCtrl", function(mydb) { 
+         var vm = this;
+         vm.saveItem = function() {
+           mydb.addItem('pasta');
+console.log("updated item list: "+mydb.getItems());
+         };
+      })
+
+      app.factory('mydb', function() {
+        var items = [];
+        var obj = {};
+
+        obj.addItem = function(item) {
+console.log("adding item ---> "+item);
+          items.push(item);
+          return 'added item';
+        };
+
+        obj.getItems = function() {
+          return items;
+        }
+
+        // a factory must return something:
+        return obj; 
+      });
+    </script
+ </body>
+</html>
+

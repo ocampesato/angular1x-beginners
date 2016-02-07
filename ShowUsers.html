@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8" />
+    <title>List of Users</title>
+
+    <script 
+     src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+    </script>
+  </head>
+  
+  <body>
+    <div ng-controller="MainCtrl as vm"> 
+      <p>My List of Users:</p>
+      <ul>
+        <li ng-repeat="user in vm.users"> 
+          {{user}}
+        </li> 
+      </ul>
+    </div>
+
+    <script> 
+      var app = angular.module("app", []);
+   
+      app.controller("MainCtrl", function() {
+         var vm = this;
+         vm.users = ["Tom", "Jane", "Dave", "Sally"];
+      });
+    </script> 
+  </body>
+</html>
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+ <head>
+  <meta charset="utf-8">
+  <title>AngularJS Controller</title>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+  </script>
+ </head>
+
+ <body>
+   <div ng-controller="MainCtrl">
+     <h1>{{message}}</h1>
+     <h2>The string "{{message}}" has length {{message.length}}</h2>
+   </div>
+
+   <script>
+     // define the Angular application:
+     var app = angular.module("myApp", []);
+
+     // define the controller:
+     app.controller("MainCtrl", function($scope) {
+       $scope.message = "Hello World";
+     }); 
+   </script
+ </body>
+</html>
+

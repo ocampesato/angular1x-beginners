@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="utf-8" />
+    <title>A Dynamic Set of DIV Elements</title>
+
+    <style>
+      div { 
+        position:absolute; 
+        width:100px; 
+        height:100px; 
+        background-color:#ff0000; 
+      }
+    </style>
+
+    <script 
+      src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+    </script>
+  </head>
+  
+  <body>
+    <div ng-init="myNumbers=[50,100,150,200]">
+      <div ng-repeat="num in myNumbers"> 
+        <div style="left:{{num}}px; top:{{num}}px;"></div>
+      </div>
+    </div>
+  </body>
+</html>
+

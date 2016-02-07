@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+<html ng-app="clickApp">
+<head>
+  <meta charset="utf-8">
+  <title>click event in AngularJS</title>
+  <link rel="stylesheet" 
+    href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+  </script>
+
+  <script>
+   var clickApp = angular.module("clickApp", []);
+  </script>
+</head>
+
+<body> 
+  <h3>Example of a double click event</h3>
+  <button ng-dblclick="count = count + 2" ng-init="count=0">
+    Increment (on double click)
+  </button>
+  count: {{count}}
+  <button ng-show="count > 0 && count%4 == 0">Multiple of Four</button> 
+</body>
+</html>   
+

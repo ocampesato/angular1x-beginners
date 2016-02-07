@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+<html ng-app="clickApp">
+<head>
+  <meta charset="utf-8">
+  <title>Click event in AngularJS</title>
+
+  <link rel="stylesheet" 
+    href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+  <script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+  </script>
+
+ <script>
+   var clickApp = angular.module("clickApp", []);
+
+   clickApp.controller("ClickCtrl", function() {
+      var vm = this;
+      vm.username = "Tom Smith";
+      vm.newname = "";
+
+      vm.clickme = function() {
+         console.log("you clicked me: "+vm.newname);
+      } 
+   });
+ </script>
+</head>
+
+<body ng-controller="ClickCtrl as vm">
+ <h3>{{vm.newname}}</h3>
+ <h3>{{vm.username}}</h3>
+
+ <form name="clickform" ng-submit="vm.clickme()">
+   <input type="input"  required placeholder="Username" ng-model="username">
+   <input type="submit" value="clickme"> 
+ </form>
+
+<button ng-click="count = count + 1" ng-init="count=0">
+  Increment
+</button>
+count: {{count}}
+</body>
+</html>   
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="utf-8" />
+    <title>A Dynamic Set of DIV Elements with Alternating Colors</title>
+
+    <style>
+      div { 
+        position:absolute; 
+        width:100px; 
+        height:100px; 
+      }
+    </style>
+
+    <script 
+      src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+    </script>
+  </head>
+  
+  <body>
+    <div ng-init="myNumbers=[50,100,150,200];colors=['red','blue']">
+      <div data-ng-repeat="num in myNumbers"> 
+       <div style="left:{{num}}px; top:{{num}}px;background-color:{{colors[$index%2]}}"></div>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title>Convert Text to Upper/Lower Case</title>
+
+    <script 
+      src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+    </script>
+  </head>
+
+  <body>
+    Enter your text here:
+    <input type="text" ng-model="sometext" />
+
+    <h1>Hello {{ sometext }}</h1>
+
+    <h4>Uppercase: {{ sometext | uppercase }}</h4>
+    <h4>Lowercase: {{ sometext | lowercase }}</h4>
+  </body>
+</html>
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html> 
+<html ng-app="clickApp">
+ <head>
+  <meta charset="utf-8">
+  <title>Form submit in AngularJS</title>
+
+  <script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+  </script>
+ </head>
+
+ <script>
+   var clickApp = angular.module("clickApp", []);
+
+   clickApp.controller("ClickCtrl", function() {
+      var vm = this;
+      vm.newname = "";
+      vm.username = "";
+
+      vm.clickme = function() {
+         console.log("new name: "+vm.username); 
+      } 
+   });
+ </script>
+
+<body ng-controller="ClickCtrl as vm">
+ <h3>{{vm.newname}}</h3>
+ <h3>{{vm.username}}</h3>
+
+ <form name="enteruser" ng-submit="vm.clickme(username)"> 
+   <input type="input" required placeholder="Username" ng-model="vm.username" />
+   <input type="submit" value="submit" /> 
+ </form>
+</body>
+</html>   
+

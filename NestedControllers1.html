@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="app">
+ <head>
+   <meta charset="utf-8">
+   <title>AngularJS Nested Controllers</title>
+
+   <script 
+     src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js">
+   </script>
+ </head>
+
+ <body>
+   <div ng-controller="CarController1 as car1">
+       My name is {{ car1.name }} and I am a {{ car1.type }}
+        
+       <div ng-controller="CarController2 as car2">
+           My name is {{ car2.name }} and I am a {{ car2.type }}
+    
+           <div ng-controller="CarController3 as car3">
+               My name is {{ car3.name }} and I am a {{ car3.type }}
+           </div>
+       </div>
+   </div>
+    
+   <script>
+     var app = angular.module('app', []);
+
+     app.controller("CarController1", function(){
+         var vm = this; 
+         vm.name = "car1";
+         vm.type = "car1";
+     });   
+
+     app.controller("CarController2", function(){
+         var vm = this; 
+         vm.name = "car2";
+       //vm.type = 'car2';
+     });   
+
+     app.controller("CarController3", function(){
+         var vm = this; 
+         vm.name = 'car3';
+         vm.type = 'car3';
+     });
+   </script>
+  </body>
+</html>
+
